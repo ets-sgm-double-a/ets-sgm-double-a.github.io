@@ -131,11 +131,13 @@
 </head>
 <body class="font-sans bg-gray-50">
 
-    <!-- MODIFIED HEADER -->
-    <header class="bg-white text-gray-800 py-2 px-4 sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto flex flex-wrap justify-between items-center">
+    <!-- ================= HEADER MODIFIED FOR RESPONSIVENESS ================= -->
+    <header class="bg-white text-gray-800 py-4 px-4 sticky top-0 z-50 shadow-md">
+        <!-- MODIFIED: Added flex-col, items-center, space-y-4 for mobile. Added md:flex-row, md:justify-between, md:items-center, md:space-y-0 for desktop -->
+        <div class="container mx-auto flex flex-col items-center space-y-4 md:flex-row md:justify-between md:items-center md:space-y-0">
             <!-- Logo & Name -->
-            <div class="flex items-center space-x-3 mb-2 md:mb-0">
+            <!-- MODIFIED: Removed md:mb-0 as parent handles spacing -->
+            <div class="flex items-center space-x-3">
                 <img src="https://i.postimg.cc/4nkLvWcg/temp_Imageij2pxo.avif" alt="Logo ETS SGM" class="h-12">
                 <div>
                     <span class="text-xl font-heading font-bold text-doublea-blue">ETS SGM</span>
@@ -150,25 +152,30 @@
              </div>
 
             <!-- Navigation Buttons -->
-            <nav class="flex items-center space-x-4 mb-2 md:mb-0">
-                 <a href="#produits" class="bg-sky-500 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-sky-600 transition whitespace-nowrap">
+            <!-- MODIFIED: Added flex-col, items-stretch, space-y-2, w-full for mobile. Added md:flex-row, md:items-center, md:space-y-0, md:space-x-4, md:w-auto for desktop -->
+            <nav class="flex flex-col items-stretch space-y-2 md:flex-row md:items-center md:space-y-0 md:space-x-4 w-full md:w-auto">
+                 <!-- MODIFIED: Added text-center for button text -->
+                 <a href="#produits" class="bg-sky-500 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-sky-600 transition whitespace-nowrap text-center">
                      Découvrez nos produits
                  </a>
-                 <a href="#economies" class="bg-doublea-blue text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap">
+                 <!-- MODIFIED: Added text-center for button text -->
+                 <a href="#economies" class="bg-doublea-blue text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap text-center">
                      Calculez vos économies
                  </a>
              </nav>
 
              <!-- Social Icons - Visible only on mobile, below other elements -->
-             <div class="md:hidden flex items-center justify-center space-x-6 w-full mt-2">
+             <!-- MODIFIED: Added order-last to ensure it appears after nav on mobile. Adjusted margin. -->
+             <div class="md:hidden flex items-center justify-center space-x-6 w-full mt-2 order-last">
                  <a href="https://www.linkedin.com/company/ets-sgm/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition" aria-label="LinkedIn ETS SGM"><i class="fab fa-linkedin text-2xl"></i></a>
                  <a href="https://www.tiktok.com/search?q=ets%20sgm&t=1745329759232" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-black transition" aria-label="TikTok ETS SGM"><i class="fab fa-tiktok text-2xl"></i></a>
              </div>
         </div>
     </header>
-    <!-- END MODIFIED HEADER -->
+    <!-- ================= END MODIFIED HEADER ================= -->
 
-    <div class="bg-doublea-red text-white py-2 px-4 text-center font-bold text-lg sticky top-[68px] z-40 shadow-md"> <!-- Adjust top value based on actual header height -->
+    <!-- MODIFIED: Adjusted top value based on potential header height changes. Test & adjust if needed. -->
+    <div class="bg-doublea-red text-white py-2 px-4 text-center font-bold text-lg sticky top-[110px] md:top-[68px] z-40 shadow-md"> <!-- Adjusted sticky top for mobile -->
         <p>✨ Jusqu'à <span class="text-2xl">40%</span> d'économies sur votre papier ! ✨</p>
     </div>
 
@@ -405,7 +412,7 @@
                  </p>
                  <!-- MODIFIED: Delivery info moved here, adjusted margin & WORDING CHANGED -->
                  <p class="text-center text-sm text-gray-600 mt-4 mb-6"> <!-- Adjusted margins -->
-                     Livraison à partir d'une palette de 48 cartons de A4 et 24 cartons de A3, livraison de demi-palette possible.
+                     Livraison à partir d'une palette de 48 cartons de A4 et 24 cartons de A3, <!-- MODIFIED: Changed "demi-palette" wording -->livraison par demi-palette également possible.
                  </p>
                 <div class="text-center mt-8">
                      <a href="mailto:contact@ets-sgm.com?subject=Demande%20de%20Devis%20Papier%20Double%20A" class="bg-doublea-red text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition text-lg">
@@ -640,17 +647,18 @@
                 if (targetId.startsWith('#') && targetId.length > 1) {
                     const targetElement = document.querySelector(targetId);
                     if(targetElement){
-                        // Adjust scroll position to account for sticky header height if needed
-                        const stickyHeader = document.querySelector('header.sticky');
-                        const stickyBanner = document.querySelector('.sticky.top-\\[68px\\]'); // Target the second sticky element specifically
+                        // Recalculate sticky elements height dynamically
                         let totalOffset = 0;
-                        if (stickyHeader) {
-                             totalOffset += stickyHeader.offsetHeight;
-                        }
-                        if (stickyBanner && window.getComputedStyle(stickyBanner).position === 'sticky') { // Check if banner is actually sticky
-                            totalOffset += stickyBanner.offsetHeight;
-                        }
-                         totalOffset = totalOffset > 0 ? totalOffset + 15 : 80; // Add slightly more buffer
+                        const stickyElements = document.querySelectorAll('.sticky');
+                        stickyElements.forEach(el => {
+                            // Check if the element is currently sticky (position: sticky or fixed)
+                            const style = window.getComputedStyle(el);
+                            if (style.position === 'sticky' || style.position === 'fixed') {
+                                totalOffset += el.offsetHeight;
+                            }
+                        });
+
+                        totalOffset = totalOffset > 0 ? totalOffset + 15 : 80; // Add slightly more buffer
 
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
@@ -670,7 +678,29 @@
             });
         });
 
-        calculateSavings(); // Initial calculation on load
+        // --- Adjust sticky banner top position dynamically ---
+        function adjustStickyBannerTop() {
+            const header = document.querySelector('header.sticky');
+            const banner = document.querySelector('.sticky.top-\\[110px\\]'); // Target mobile specific class
+            if (header && banner && window.innerWidth < 768) { // Only run on mobile
+                const headerHeight = header.offsetHeight;
+                banner.style.top = `${headerHeight}px`;
+            } else if (banner) {
+                // Reset top for desktop or if header doesn't exist
+                banner.style.top = '68px'; // Original desktop value
+                 // Or select the desktop specific class if you created one:
+                 // const bannerDesktop = document.querySelector('.sticky.top-\\[68px\\]');
+                 // if (bannerDesktop) bannerDesktop.style.top = '68px';
+            }
+        }
+
+        // Initial calculation on load
+        calculateSavings();
+        adjustStickyBannerTop(); // Adjust banner top on load
+
+        // Recalculate on resize
+        window.addEventListener('resize', adjustStickyBannerTop);
+
     </script>
 
 </body>
