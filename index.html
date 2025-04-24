@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Découvrez notre gamme de papier Double A Premium, Everyday, Business, Color Print, Presentation chez ETS SGM, votre grossiste partenaire officiel. Qualité supérieure, service réactif et jusqu'à 40% d'économies. Calculez vos économies. Papier certifié FSC®.">
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="920159a2e2e94b42" />
     <title>ETS SGM - Partenaire Officiel DOUBLE A | Papier Premium & Grossiste</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -690,22 +692,26 @@
         // --- Adjust sticky banner top position dynamically ---
         function adjustStickyBannerTop() {
             const header = document.querySelector('header.sticky');
-            const banner = document.querySelector('.sticky.top-\\[110px\\]'); // Target mobile specific class
-            if (header && banner && window.innerWidth < 768) { // Only run on mobile
-                const headerHeight = header.offsetHeight;
-                banner.style.top = `${headerHeight}px`;
-            } else if (banner) {
-                // Reset top for desktop or if header doesn't exist
-                 // Use the specific desktop class selector if available
-                const bannerDesktop = document.querySelector('.sticky.md\\:top-\\[68px\\]');
-                 if (bannerDesktop) {
-                    bannerDesktop.style.top = '68px'; // Original desktop value
-                } else {
-                    // Fallback if only one banner element exists
-                     banner.style.top = '68px';
-                }
+            const bannerMobile = document.querySelector('.sticky.top-\\[110px\\]'); // Target mobile specific class
+            const bannerDesktop = document.querySelector('.sticky.md\\:top-\\[68px\\]'); // Target desktop specific class
+            const banner = bannerMobile || bannerDesktop; // Fallback in case one class is missing
+
+            if (header && banner) {
+                 if (window.innerWidth < 768) { // On mobile
+                     const headerHeight = header.offsetHeight;
+                     banner.style.top = `${headerHeight}px`;
+                 } else { // On desktop
+                    // Ensure the correct class is used for the desktop value
+                     if (bannerDesktop) {
+                         bannerDesktop.style.top = '68px'; // Original desktop value
+                    } else if (bannerMobile) {
+                         // If only the mobile class exists, still apply desktop logic
+                         bannerMobile.style.top = '68px';
+                    }
+                 }
             }
         }
+
 
         // Initial calculation on load
         calculateSavings();
