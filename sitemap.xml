@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://ets-sgm-double-a.github.io/</loc>
+    <lastmod>2024-05-21</lastmod> <!-- Date d'aujourd'hui (Format AAAA-MM-JJ) -->
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority> <!-- Priorité maximale pour la page principale -->
+  </url>
+
+  <url>
+    <loc>https://ets-sgm-double-a.github.io/cgv.html</loc>
+    <lastmod>2024-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority> <!-- Priorité inférieure pour les CGV -->
+  </url>
+
+  <url>
+    <loc>https://ets-sgm-double-a.github.io/mentions-legales.html</loc>
+    <lastmod>2024-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority> <!-- Priorité inférieure pour les Mentions Légales -->
+  </url>
+
+  <!-- Ajoutez d'autres blocs <url> ici si vous avez d'autres pages -->
+
+</urlset>
