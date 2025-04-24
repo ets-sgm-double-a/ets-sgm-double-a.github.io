@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre gamme de papier Double A Premium, Everyday, Business, Color Print, Presentation chez ETS SGM, votre grossiste partenaire officiel. Qualité supérieure, service réactif et jusqu'à 40% d'économies. Calculez vos économies. Papier certifié FSC®.">
+    <title>ETS SGM - Partenaire Officiel DOUBLE A | Papier Premium & Grossiste</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'doublea-red': '#E31937',
+                        'doublea-blue': '#0054A6',
+                        'doublea-green': '#2A5C3F'
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .hover-zoom {
+            transition: transform 0.3s;
+        }
+        .hover-zoom:hover {
+            transform: scale(1.03);
+        }
+        /* MODIFIED: Changed border color to white */
+        .calculator-input {
+             border: 2px solid white;
+             padding: 8px 12px;
+             border-radius: 6px;
+             text-align: center;
+             font-weight: bold;
+             width: 100px;
+             color: #333; /* Keep input text dark */
+        }
+        .calculator-output {
+            font-weight: bold;
+            font-size: 1.1em;
+            /* Default color removed, classes will handle it */
+            min-width: 80px;
+            display: inline-block;
+            text-align: right;
+        }
+        /* KEPT AS IS for red/green output */
+        .saving-positive {
+            color: #2A5C3F; /* doublea-green */
+        }
+         .saving-negative {
+             color: #E31937; /* doublea-red */
+         }
+        /* Styles pour la nouvelle section produit */
+        .product-card {
+            display: flex;
+            flex-direction: column; /* Stack image and text vertically by default */
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            overflow: hidden; /* Ensure rounded corners clip content */
+            transition: transform 0.3s;
+            position: relative; /* Needed for badge positioning */
+        }
+        .product-card:hover {
+            transform: scale(1.03); /* hover-zoom equivalent */
+        }
+        .product-image-container {
+             padding: 1rem; /* p-4 */
+             background-color: #f9fafb; /* bg-gray-50 or similar for contrast */
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             min-height: 200px; /* Ensure some height */
+        }
+        .product-image {
+             max-height: 180px; /* Limit image height */
+             width: auto;
+             object-fit: contain;
+        }
+        .product-text-content {
+            padding: 1.5rem; /* p-6 */
+        }
+        .product-title {
+            font-family: 'Montserrat', sans-serif; /* font-heading */
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 0.75rem; /* mb-3 */
+            color: #0054A6; /* text-doublea-blue */
+        }
+        .product-description {
+            font-size: 0.9rem; /* text-sm approx */
+            color: #4b5563; /* text-gray-700 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .product-specs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.875rem; /* text-sm */
+            color: #4b5563; /* text-gray-700 */
+            space-y: 0.25rem; /* space-y-1 */
+        }
+        .product-specs li strong {
+            color: #1f2937; /* text-gray-800 */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            .product-card {
+                flex-direction: row; /* Image beside text on medium screens and up */
+                align-items: stretch; /* Make sure containers stretch to full height */
+            }
+            .product-image-container {
+                width: 40%; /* Adjust width split */
+                min-height: auto; /* Reset min-height */
+            }
+             .product-image {
+                 max-height: 220px; /* Allow slightly larger image */
+             }
+            .product-text-content {
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+    <!-- MODIFIED HEADER -->
+    <header class="bg-white text-gray-800 py-2 px-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex flex-wrap justify-between items-center">
+            <!-- Logo & Name -->
+            <div class="flex items-center space-x-3 mb-2 md:mb-0">
+                <img src="https://i.postimg.cc/4nkLvWcg/temp_Imageij2pxo.avif" alt="Logo ETS SGM" class="h-12">
+                <div>
+                    <span class="text-xl font-heading font-bold text-doublea-blue">ETS SGM</span>
+                    <p class="text-xs text-gray-500">Partenaire Officiel <img src="https://i.postimg.cc/tRKgtp5X/logo-double-a.png" alt="Double A" class="h-4 inline-block ml-1"></p>
+                </div>
+            </div>
+
+            <!-- Social Icons - Centered on Desktop, hidden on mobile -->
+            <div class="hidden md:flex items-center space-x-4 mx-auto">
+                 <a href="https://www.linkedin.com/company/ets-sgm/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition" aria-label="LinkedIn ETS SGM"><i class="fab fa-linkedin text-2xl"></i></a>
+                 <a href="https://www.tiktok.com/search?q=ets%20sgm&t=1745329759232" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-black transition" aria-label="TikTok ETS SGM"><i class="fab fa-tiktok text-2xl"></i></a>
+             </div>
+
+            <!-- Navigation Buttons -->
+            <nav class="flex items-center space-x-4 mb-2 md:mb-0">
+                 <a href="#produits" class="bg-sky-500 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-sky-600 transition whitespace-nowrap">
+                     Découvrez nos produits
+                 </a>
+                 <a href="#economies" class="bg-doublea-blue text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap">
+                     Calculez vos économies
+                 </a>
+             </nav>
+
+             <!-- Social Icons - Visible only on mobile, below other elements -->
+             <div class="md:hidden flex items-center justify-center space-x-6 w-full mt-2">
+                 <a href="https://www.linkedin.com/company/ets-sgm/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition" aria-label="LinkedIn ETS SGM"><i class="fab fa-linkedin text-2xl"></i></a>
+                 <a href="https://www.tiktok.com/search?q=ets%20sgm&t=1745329759232" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-black transition" aria-label="TikTok ETS SGM"><i class="fab fa-tiktok text-2xl"></i></a>
+             </div>
+        </div>
+    </header>
+    <!-- END MODIFIED HEADER -->
+
+    <div class="bg-doublea-red text-white py-2 px-4 text-center font-bold text-lg sticky top-[68px] z-40 shadow-md"> <!-- Adjust top value based on actual header height -->
+        <p>✨ Jusqu'à <span class="text-2xl">40%</span> d'économies sur votre papier ! ✨</p>
+    </div>
+
+    <section class="relative bg-gradient-to-r from-blue-50 via-white to-red-50 text-gray-800 py-20 md:py-28">
+        <div class="container mx-auto px-6 text-center relative z-10">
+             <!-- LOGO DOUBLE A SIZE INCREASED -->
+             <img src="https://i.postimg.cc/tRKgtp5X/logo-double-a.png" alt="Double A Premium Paper Logo" class="h-32 mx-auto mb-10"> <!-- Changed h-16 to h-32 -->
+             <!-- MODIFIED INFO BOXES -->
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10 text-left">
+                 <div class="bg-sky-500 text-white px-5 py-4 rounded-lg text-center shadow-md flex flex-col justify-center">
+                     <h2 class="font-heading text-2xl font-bold mb-3">DOUBLE A</h2>
+                     <p class="text-sm">Papier reconnu internationalement pour sa qualité et son engagement écoresponsable</p> <!-- MODIFIED: removed period -->
+                 </div>
+                 <div class="bg-doublea-blue text-white px-5 py-4 rounded-lg text-center shadow-md flex flex-col justify-center">
+                     <h2 class="font-heading text-2xl font-bold mb-3">ETS SGM</h2>
+                     <p class="text-sm">Partenaire officiel Double A, au service des professionnels</p> <!-- MODIFIED: removed period -->
+                 </div>
+             </div>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-700">Revendeur officiel de la marque en France, grossiste à destination des professionnels</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="mailto:contact@ets-sgm.com?subject=Demande%20de%20Devis%20Rapide%20Papier%20Double%20A" class="bg-doublea-red text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">
+                    Demander un Devis Rapide <i class="fas fa-file-alt ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+         <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4 text-doublea-blue">Les Avantages ETS SGM & DOUBLE A</h2>
+                <div class="w-24 h-1 bg-doublea-red mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 hover-zoom">
+                    <div class="w-20 h-20 bg-doublea-red text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gem text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Qualité Premium Reconnue</h3>
+                    <!-- MODIFIED: Removed 'et une surface lisse', added 'une grande opacité', removed trailing period -->
+                    <p class="text-gray-600">Fluidité garantie sans bourrage, impressions nettes recto-verso grâce à une grande opacité</p>
+                </div>
+                <div class="text-center p-6 hover-zoom">
+                    <div class="w-20 h-20 bg-doublea-blue text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Service Professionnel Réactif</h3>
+                    <!-- MODIFIED: Removed trailing period -->
+                    <p class="text-gray-600">Conseils personnalisés, audit, stock disponible et livraison rapide sur toute la France (48h/72h)</p>
+                </div>
+                <div class="text-center p-6 hover-zoom">
+                    <div class="w-20 h-20 bg-doublea-green text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                         <i class="fas fa-leaf text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Engagement Durable</h3>
+                    <!-- MODIFIED: Removed trailing period -->
+                    <p class="text-gray-600">Papier issu de fibres vierges d'eucalyptus de plantations gérées durablement (Certifié FSC®)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PRODUITS MISE A JOUR -->
+    <section id="produits" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4 text-doublea-blue">Notre Gamme de Papier DOUBLE A</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Découvrez les différentes qualités de papier Double A disponibles.</p>
+                <div class="w-24 h-1 bg-doublea-red mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-10">
+
+                <!-- Produit 1: Double A Premium - HIGHLIGHTED & MODIFIED -->
+                <div class="product-card border-4 border-doublea-red">
+                    <span class="absolute top-0 right-0 bg-doublea-red text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10">Meilleure Vente</span>
+                    <div class="product-image-container">
+                        <img src="https://i.postimg.cc/P5hGG9JZ/temp-Image-ERj-Uie.avif" alt="Ramette papier A4 Double A Premium 80g" class="product-image">
+                    </div>
+                    <div class="product-text-content">
+                        <h3 class="product-title">Double A Premium</h3>
+                        <p class="product-description">Le grammage du papier Double A Premium est de 80 g/m², un poids standard pour le papier d’impression. Une feuille de 80 g/m² est un papier de grande qualité qui permet une impression recto verso.</p>
+                        <ul class="product-specs">
+                            <li><strong>Grammage :</strong> 80 g/m²</li>
+                            <li><strong>Formats disponibles :</strong> A3 (297 x 420mm), A4 (210 x 297mm), A5 (148 x 210mm)</li>
+                            <li><strong>Conditionnement :</strong> Carton, ramette de 100, 250, 500 feuilles</li>
+                            <!-- MODIFIED: Conditionnement Clever Box -->
+                            <li><strong>Conditionnement Clever Box :</strong> A4 (Carton de 2500 feuilles, pratique pour le stockage et l'utilisation)</li>
+                            <li><strong>Blancheur CIE :</strong> 165</li>
+                            <li><strong>Usage :</strong> Impression standard et recto-verso de haute qualité</li>
+                            <li><strong>Certification :</strong> FSC®</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END MODIFIED PRODUCT 1 -->
+
+                <!-- Produit 2: Double A Everyday -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                         <img src="https://i.postimg.cc/J4F89PJ5/temp-Image-J2-Eow-Y.avif" alt="Ramette papier A4 Double A Everyday 70g" class="product-image">
+                    </div>
+                    <div class="product-text-content">
+                        <h3 class="product-title">Double A Everyday</h3>
+                         <!-- MODIFIED: Description -->
+                         <p class="product-description">Le grammage du papier Double A Everyday est de 70 g/m². Ce papier plus léger et fin offre une bonne qualité pour les impressions quotidiennes.</p> <!-- Example non-comparative description -->
+                        <ul class="product-specs">
+                            <li><strong>Grammage :</strong> 70 g/m²</li>
+                            <li><strong>Formats disponibles :</strong> A4 (210 x 297mm), A3 (297 x 420mm)</li>
+                            <li><strong>Conditionnement :</strong> Carton, ramette de 500 feuilles</li>
+                            <li><strong>Blancheur CIE :</strong> 163</li>
+                            <li><strong>Usage :</strong> Usage quotidien, économique</li>
+                            <li><strong>Certification :</strong> FSC®</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Produit 3: Double A Business -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://i.postimg.cc/v8ScX7P5/temp-Image5-Ij-D7t.avif" alt="Ramette papier A4 Double A Business 75g" class="product-image">
+                    </div>
+                    <div class="product-text-content">
+                         <h3 class="product-title">Double A Business</h3>
+                         <!-- MODIFIED: Description -->
+                         <p class="product-description">Avec son grammage de 75 g/m², le papier Double A Business garantit un résultat de qualité et facilite l’impression au sein de votre entreprise.</p> <!-- Example non-comparative description -->
+                        <ul class="product-specs">
+                            <li><strong>Grammage :</strong> 75 g/m²</li>
+                            <li><strong>Formats disponibles :</strong> A4 (210 x 297mm), A3 (297 x 420mm)</li>
+                            <li><strong>Conditionnement :</strong> Carton, ramette de 500 feuilles</li>
+                            <li><strong>Blancheur CIE :</strong> 163</li>
+                            <li><strong>Usage :</strong> Usage professionnel quotidien, bon rapport qualité/prix</li>
+                            <li><strong>Certification :</strong> FSC®</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Produit 4: Double A Color Print -->
+                <div class="product-card">
+                     <div class="product-image-container">
+                         <img src="https://i.postimg.cc/ZKMsTQw0/temp-Image-UZJok-U.avif" alt="Ramette papier A4 Double A Color Print 90g" class="product-image">
+                     </div>
+                     <div class="product-text-content">
+                         <h3 class="product-title">Double A Color Print</h3>
+                         <!-- MODIFIED: Description based on user request -->
+                         <p class="product-description">Grâce à un grammage de 90 g/m², le papier Double A Color Print est idéal pour une impression couleur et recto verso de haute qualité.</p>
+                         <ul class="product-specs">
+                             <li><strong>Grammage :</strong> 90 g/m²</li>
+                             <li><strong>Formats disponibles :</strong> A4 (210 x 297mm), A3 (297 x 420mm)</li>
+                             <li><strong>Conditionnement :</strong> Carton, ramette de 500 feuilles</li>
+                             <li><strong>Blancheur CIE :</strong> 163</li>
+                             <li><strong>Usage :</strong> Idéal pour impressions couleur vives et graphiques</li>
+                             <li><strong>Certification :</strong> FSC®</li>
+                         </ul>
+                     </div>
+                 </div>
+
+                <!-- Produit 5: Double A Presentation -->
+                 <div class="product-card">
+                     <div class="product-image-container">
+                         <img src="https://i.postimg.cc/GhgD6wqg/temp-Image-X7bi-Q0.avif" alt="Ramette papier Double A Presentation 100g" class="product-image">
+                     </div>
+                     <div class="product-text-content">
+                         <h3 class="product-title">Double A Presentation</h3>
+                         <!-- MODIFIED: Description without comparison -->
+                         <p class="product-description">Le papier Double A Presentation, avec son grammage de 100 g/m², offre une excellente tenue et une qualité remarquable, idéal pour vos dossiers de présentation importants.</p>
+                         <ul class="product-specs">
+                             <li><strong>Grammage :</strong> 100 g/m²</li>
+                             <li><strong>Formats disponibles :</strong> A4 (210 x 297mm), A3 (297 x 420mm)</li>
+                             <li><strong>Conditionnement :</strong> Carton, ramette de 500 feuilles</li>
+                             <li><strong>Blancheur CIE :</strong> 165</li>
+                             <li><strong>Usage :</strong> Idéal pour présentations de haute qualité</li>
+                             <li><strong>Certification :</strong> FSC®</li>
+                         </ul>
+                     </div>
+                 </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- FIN SECTION PRODUITS MISE A JOUR -->
+
+
+    <!-- ====================================================== -->
+    <!-- ========== SECTION ECONOMIES MODIFIED START ========== -->
+    <!-- ====================================================== -->
+    <section id="economies" class="py-16 bg-white">
+         <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4 text-doublea-blue">Estimez votre potentiel d'économies</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Indiquez votre prix d'achat actuel HT par ramette pour simuler vos économies potentielles (ou le surcoût éventuel) sur le papier DOUBLE A Premium.</p>
+                <div class="w-24 h-1 bg-doublea-red mx-auto mt-4"></div>
+            </div>
+            <div class="max-w-5xl mx-auto bg-gradient-to-r from-blue-50 to-red-50 p-6 md:p-10 rounded-xl shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <!-- MODIFIED: Calculator Box 1 Styling -->
+                    <div class="bg-sky-500 text-white p-6 rounded-lg shadow">
+                        <h3 class="font-heading text-xl font-bold mb-4 text-center text-white">Papier A4 (80g Premium)</h3> <!-- MODIFIED: text-white -->
+                        <div class="flex flex-col items-center mb-4">
+                            <label for="userPriceA4" class="block text-sm font-medium text-gray-100 mb-1">Votre prix actuel / ramette (€ HT)</label> <!-- MODIFIED: text-gray-100 -->
+                            <input type="number" id="userPriceA4" name="userPriceA4" step="0.01" min="0" placeholder="Ex: 5.80" class="calculator-input" oninput="calculateSavings()"> <!-- Style updated via CSS -->
+                        </div>
+                        <div class="text-center mb-4 text-sm text-gray-100"> <!-- MODIFIED: text-gray-100 -->
+                            Notre prix ETS SGM : <strong class="text-white font-semibold">3.50 € HT</strong><sup class="text-doublea-red">*</sup> <!-- MODIFIED: text-white font-semibold -->
+                        </div>
+                        <div class="space-y-3">
+                            <p class="text-center">Différence / ramette : <strong id="saving-a4-ream" class="calculator-output">0.00 €</strong></p> <!-- Color handled by JS -->
+                            <p class="text-center">Différence / carton (5r.) : <strong id="saving-a4-carton" class="calculator-output">0.00 €</strong></p> <!-- Color handled by JS -->
+                            <p class="text-center">Différence / palette (240r.) : <strong id="saving-a4-pallet" class="calculator-output">0.00 €</strong></p> <!-- Color handled by JS -->
+                        </div>
+                    </div>
+                    <!-- MODIFIED: Calculator Box 2 Styling -->
+                    <div class="bg-doublea-blue text-white p-6 rounded-lg shadow">
+                        <h3 class="font-heading text-xl font-bold mb-4 text-center text-white">Papier A3 (80g Premium)</h3> <!-- MODIFIED: text-white -->
+                         <div class="flex flex-col items-center mb-4">
+                            <label for="userPriceA3" class="block text-sm font-medium text-gray-100 mb-1">Votre prix actuel / ramette (€ HT)</label> <!-- MODIFIED: text-gray-100 -->
+                            <input type="number" id="userPriceA3" name="userPriceA3" step="0.01" min="0" placeholder="Ex: 11.50" class="calculator-input" oninput="calculateSavings()"> <!-- Style updated via CSS -->
+                        </div>
+                         <div class="text-center mb-4 text-sm text-gray-100"> <!-- MODIFIED: text-gray-100 -->
+                            Notre prix ETS SGM : <strong class="text-white font-semibold">7.00 € HT</strong><sup class="text-doublea-red">*</sup> <!-- MODIFIED: text-white font-semibold -->
+                        </div>
+                        <div class="space-y-3">
+                            <p class="text-center">Différence / ramette : <strong id="saving-a3-ream" class="calculator-output">0.00 €</strong></p> <!-- Color handled by JS -->
+                            <p class="text-center">Différence / carton (5r.) : <strong id="saving-a3-carton" class="calculator-output">0.00 €</strong></p> <!-- Color handled by JS -->
+                            <p class="text-center">Différence / palette (120r.) : <strong id="saving-a3-pallet" class="calculator-output">0.00 €</strong></p> <!-- Color handled by JS -->
+                        </div>
+                    </div>
+                </div>
+                 <p class="text-center text-xs text-gray-500 mt-4 mb-2"><sup class="text-doublea-red">*</sup> Tarif à partir de, hors livraison et hors accords cadres spécifiques.</p>
+                 <!-- MODIFIED: Added <br> tags for line breaks -->
+                 <p class="text-center text-sm text-gray-500">
+                     Les différences sont calculées sur la base de nos tarifs indicatifs pour le papier Premium 80g.<br>
+                     <span class="text-green-700 font-semibold">Un chiffre positif indique une économie</span>, <span class="text-red-700 font-semibold">un chiffre négatif indique un surcoût par rapport à votre prix actuel</span>.<br>
+                     Contactez-nous pour un devis précis.
+                 </p>
+                 <!-- MODIFIED: Delivery info moved here, adjusted margin & WORDING CHANGED -->
+                 <p class="text-center text-sm text-gray-600 mt-4 mb-6"> <!-- Adjusted margins -->
+                     Livraison à partir d'une palette de 48 cartons de A4 et 24 cartons de A3, livraison de demi-palette possible.
+                 </p>
+                <div class="text-center mt-8">
+                     <a href="mailto:contact@ets-sgm.com?subject=Demande%20de%20Devis%20Papier%20Double%20A" class="bg-doublea-red text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition text-lg">
+                        Demander un Devis <i class="fas fa-envelope ml-2"></i>
+                    </a>
+                </div>
+                <!-- Delivery info was here, now moved up -->
+            </div>
+        </div>
+    </section>
+    <!-- ====================================================== -->
+    <!-- ========== SECTION ECONOMIES MODIFIED END ========== -->
+    <!-- ====================================================== -->
+
+
+    <section id="temoignages" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4 text-doublea-blue">Ce que disent nos clients</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">La satisfaction de nos clients est notre priorité.</p>
+                <div class="w-24 h-1 bg-doublea-red mx-auto mt-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center hover-zoom">
+                    <div class="text-yellow-400 mb-3 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic text-gray-600 mb-4 flex-grow">"Excellent service client et livraison ultra rapide ! Le papier Double A est d'une qualité irréprochable, nos impressions n'ont jamais été aussi nettes. ETS SGM est devenu notre fournisseur attitré."</p>
+                    <p class="font-semibold text-gray-800 mt-auto">Sophie D., Assistante de Direction</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center hover-zoom">
+                    <div class="text-yellow-400 mb-3 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="italic text-gray-600 mb-4 flex-grow">"Nous commandons par palette et les économies réalisées grâce à ETS SGM sont significatives. Le simulateur sur leur site nous a convaincus, et la réalité dépasse nos attentes. Qualité et prix imbattables."</p>
+                    <p class="font-semibold text-gray-800 mt-auto">Marc L., Responsable Achats PME</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center hover-zoom">
+                    <div class="text-yellow-400 mb-3 text-xl">
+                       <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic text-gray-600 mb-4 flex-grow">"Passer commande est simple et l'équipe est toujours disponible pour répondre à nos questions. Le papier Premium est parfait pour nos présentations clients. Nous recommandons vivement ETS SGM."</p>
+                    <p class="font-semibold text-gray-800 mt-auto">Cabinet Comptable FiduConseil</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+         <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-8 bg-gradient-to-r from-doublea-green to-green-700 rounded-xl overflow-hidden text-white shadow-lg">
+                <div class="md:w-1/3 p-8 text-center">
+                    <img src="https://i.postimg.cc/WzDpMbtP/FSC-1.jpg"
+                         alt="Certification FSC Mixte Crédit Double A"
+                         class="w-full max-w-[180px] mx-auto mb-4 rounded border-4 border-white" loading="lazy">
+                    <h3 class="font-heading text-xl font-bold mb-1">FSC® Mixte Crédit</h3>
+                    <p class="text-sm opacity-90">FSC-C131237</p>
+                </div>
+                <div class="md:w-2/3 p-8 md:p-10">
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold mb-5">L'Engagement Éco-Responsable DOUBLE A</h2>
+                    <p class="mb-5 opacity-95">Le papier DOUBLE A est produit à partir d'arbres d'eucalyptus spécifiquement cultivés (KHAN-NA) sur des terres inexploitées en Thaïlande. Cela garantit une source de fibre durable sans contribuer à la déforestation des forêts naturelles.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-green-300 mr-2 mt-1"><i class="fas fa-recycle"></i></span>
+                            <span><strong>Fibres vierges durables :</strong> Issues de plantations dédiées et renouvelables.</span>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-300 mr-2 mt-1"><i class="fas fa-seedling"></i></span>
+                            <span><strong>Contribution positive :</strong> Génère des revenus pour les agriculteurs locaux et préserve la biodiversité.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-300 mr-2 mt-1"><i class="fas fa-industry"></i></span>
+                            <span><strong>Production optimisée :</strong> Processus de fabrication visant à réduire la consommation d'eau et d'énergie.</span>
+                        </li>
+                    </ul>
+                    <a href="https://eu.doubleapaper.com/fr/about-us/better-world" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-doublea-green px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition">
+                        En savoir plus sur la durabilité <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-doublea-blue text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Contactez Votre Conseiller ETS SGM</h2>
+                <p class="text-xl max-w-2xl mx-auto opacity-90">Nous sommes à votre écoute pour toute demande de devis, information ou conseil.</p>
+            </div>
+            <div class="max-w-3xl mx-auto bg-white text-gray-800 p-8 rounded-lg shadow-xl">
+                 <h3 class="font-heading text-2xl font-bold mb-8 text-center text-doublea-blue">Nos Coordonnées</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-4 text-2xl text-doublea-red"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Adresse</h4>
+                                <p class="text-gray-700">ETS SGM<br>20 BIS Allée de la Biotte<br>33470 Gujan-Mestras, France</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-4 text-2xl text-doublea-red"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Téléphones</h4>
+                                <p class="text-gray-700">
+                                    <a href="tel:+33776699489" class="hover:text-doublea-blue">07 76 69 94 89</a>
+                                    <span class="mx-2">|</span>
+                                    <a href="tel:+33684474679" class="hover:text-doublea-blue">06 84 47 46 79</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-4 text-2xl text-doublea-red"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Email</h4>
+                                <p class="text-gray-700 break-all">
+                                    <a href="mailto:contact@ets-sgm.com" class="hover:text-doublea-blue">contact@ets-sgm.com</a>
+                                </p>
+                            </div>
+                        </div>
+                         <div class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-4 text-2xl text-doublea-red"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Horaires</h4>
+                                <!-- HORAIRES MODIFIES ICI -->
+                                <p class="text-gray-700">Du Lundi au Vendredi<br>9h00 - 12h30 / 14h00 - 17h30</p>
+                                <!-- FIN MODIFICATION HORAIRES -->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODIFIED FOOTER -->
+    <footer class="bg-gray-900 text-white py-8">
+         <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 flex items-center space-x-3">
+                     <img src="https://i.postimg.cc/4nkLvWcg/temp_Imageij2pxo.avif" alt="Logo ETS SGM" class="h-10">
+                    <span class="text-lg font-heading">ETS SGM</span>
+                     <span class="text-sm text-gray-400 ml-4 hidden md:inline">| Partenaire Officiel <img src="https://i.postimg.cc/tRKgtp5X/logo-double-a.png" alt="Double A" class="h-4 inline-block ml-1"></span>
+                </div>
+                <!-- REMOVED Footer Social Icons div -->
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <!-- MODIFIED: Copyright year -->
+                <p>© 2025 ETS SGM. Tous droits réservés.</p>
+                <p class="mt-2">Papier DOUBLE A certifié FSC® C131237. Les logos DOUBLE A sont la propriété de Double A (1991) Public Company Limited.</p>
+                 <p class="mt-2">
+                     <!-- Liens mis à jour pour pointer vers les fichiers locaux -->
+                     <a href="./mentions-legales.html" class="hover:text-white">Mentions Légales</a>
+                     <span class="mx-2">|</span>
+                     <a href="./cgv.html" class="hover:text-white">CGV</a>
+                 </p>
+            </div>
+        </div>
+    </footer>
+    <!-- END MODIFIED FOOTER -->
+
+    <script>
+        const ETS_SGM_PRICE_A4 = 3.50;
+        const ETS_SGM_PRICE_A3 = 7.00;
+        const REAMS_PER_CARTON = 5;
+        const REAMS_PER_PALLET_A4 = 240; // 48 cartons * 5 ramettes
+        const REAMS_PER_PALLET_A3 = 120; // 24 cartons * 5 ramettes
+
+        const inputPriceA4 = document.getElementById('userPriceA4');
+        const inputPriceA3 = document.getElementById('userPriceA3');
+        const outputSavingA4Ream = document.getElementById('saving-a4-ream');
+        const outputSavingA4Carton = document.getElementById('saving-a4-carton');
+        const outputSavingA4Pallet = document.getElementById('saving-a4-pallet');
+        const outputSavingA3Ream = document.getElementById('saving-a3-ream');
+        const outputSavingA3Carton = document.getElementById('saving-a3-carton');
+        const outputSavingA3Pallet = document.getElementById('saving-a3-pallet');
+
+        function displaySaving(element, value) {
+            // Check if the value is Not a Number
+            if (isNaN(value)) {
+                element.textContent = '0.00 €'; // Display default text for invalid input
+                element.classList.remove('saving-positive');
+                element.classList.add('saving-negative'); // Or a neutral class if preferred
+            } else {
+                // Format the value to 2 decimal places and add the currency symbol
+                element.textContent = `${value.toFixed(2)} €`;
+                // Apply class based on whether the value is positive or non-positive (zero or negative)
+                if (value > 0) {
+                    element.classList.remove('saving-negative');
+                    element.classList.add('saving-positive');
+                } else {
+                    element.classList.remove('saving-positive');
+                    element.classList.add('saving-negative');
+                }
+            }
+        }
+
+        function calculateSavings() {
+            // Get user input, default to 0 if empty or invalid
+            const userPriceA4 = parseFloat(inputPriceA4.value) || 0;
+            // Check if input is a non-negative number
+            if (userPriceA4 >= 0 && inputPriceA4.value.trim() !== '') { // Also check if input is not just whitespace
+                 const savingPerReamA4 = userPriceA4 - ETS_SGM_PRICE_A4;
+                 displaySaving(outputSavingA4Ream, savingPerReamA4);
+                 displaySaving(outputSavingA4Carton, savingPerReamA4 * REAMS_PER_CARTON);
+                 displaySaving(outputSavingA4Pallet, savingPerReamA4 * REAMS_PER_PALLET_A4);
+            } else {
+                 // Reset display if input is negative or empty/invalid
+                 displaySaving(outputSavingA4Ream, NaN); // Pass NaN to trigger default display
+                 displaySaving(outputSavingA4Carton, NaN);
+                 displaySaving(outputSavingA4Pallet, NaN);
+            }
+
+            const userPriceA3 = parseFloat(inputPriceA3.value) || 0;
+             if (userPriceA3 >= 0 && inputPriceA3.value.trim() !== '') { // Also check if input is not just whitespace
+                const savingPerReamA3 = userPriceA3 - ETS_SGM_PRICE_A3;
+                displaySaving(outputSavingA3Ream, savingPerReamA3);
+                displaySaving(outputSavingA3Carton, savingPerReamA3 * REAMS_PER_CARTON);
+                displaySaving(outputSavingA3Pallet, savingPerReamA3 * REAMS_PER_PALLET_A3);
+             } else {
+                 // Reset display if input is negative or empty/invalid
+                 displaySaving(outputSavingA3Ream, NaN); // Pass NaN to trigger default display
+                 displaySaving(outputSavingA3Carton, NaN);
+                 displaySaving(outputSavingA3Pallet, NaN);
+             }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                // Only scroll smoothly for internal links, not mailto: or tel: or external/other pages
+                if (targetId.startsWith('#') && targetId.length > 1) {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement){
+                        // Adjust scroll position to account for sticky header height if needed
+                        const stickyHeader = document.querySelector('header.sticky');
+                        const stickyBanner = document.querySelector('.sticky.top-\\[68px\\]'); // Target the second sticky element specifically
+                        let totalOffset = 0;
+                        if (stickyHeader) {
+                             totalOffset += stickyHeader.offsetHeight;
+                        }
+                        if (stickyBanner && window.getComputedStyle(stickyBanner).position === 'sticky') { // Check if banner is actually sticky
+                            totalOffset += stickyBanner.offsetHeight;
+                        }
+                         totalOffset = totalOffset > 0 ? totalOffset + 15 : 80; // Add slightly more buffer
+
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                } else if (!targetId.startsWith('mailto:') && !targetId.startsWith('tel:') && !targetId.startsWith('#') && !targetId.startsWith('javascript:')) {
+                     // For external links or different pages (like mentions-legales.html), just navigate
+                     window.location.href = targetId;
+                } else if (targetId.startsWith('mailto:') || targetId.startsWith('tel:')) {
+                     // Allow mailto and tel links default behavior
+                     window.location.href = targetId;
+                }
+            });
+        });
+
+        calculateSavings(); // Initial calculation on load
+    </script>
+
+</body>
+</html>
