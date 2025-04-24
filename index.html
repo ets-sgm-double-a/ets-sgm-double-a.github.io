@@ -475,7 +475,8 @@
                     <p class="text-sm opacity-90">FSC-C131237</p>
                 </div>
                 <div class="md:w-2/3 p-8 md:p-10">
-                    <h2 class="font-heading text-2xl md:text-3xl font-bold mb-5">L'engagement écoresponsable DOUBLE A</h2>
+                    <!-- MODIFIED: Added text-center and md:text-left -->
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold mb-5 text-center md:text-left">L'engagement écoresponsable DOUBLE A</h2>
                     <p class="mb-5 opacity-95">Le papier DOUBLE A est produit à partir d'arbres d'eucalyptus spécifiquement cultivés (KHAN-NA) sur des terres inexploitées en Thaïlande. Cela garantit une source de fibre durable sans contribuer à la déforestation des forêts naturelles.</p>
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-start">
@@ -695,10 +696,14 @@
                 banner.style.top = `${headerHeight}px`;
             } else if (banner) {
                 // Reset top for desktop or if header doesn't exist
-                banner.style.top = '68px'; // Original desktop value
-                 // Or select the desktop specific class if you created one:
-                 // const bannerDesktop = document.querySelector('.sticky.top-\\[68px\\]');
-                 // if (bannerDesktop) bannerDesktop.style.top = '68px';
+                 // Use the specific desktop class selector if available
+                const bannerDesktop = document.querySelector('.sticky.md\\:top-\\[68px\\]');
+                 if (bannerDesktop) {
+                    bannerDesktop.style.top = '68px'; // Original desktop value
+                } else {
+                    // Fallback if only one banner element exists
+                     banner.style.top = '68px';
+                }
             }
         }
 
