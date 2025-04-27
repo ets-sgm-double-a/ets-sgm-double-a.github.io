@@ -6,6 +6,9 @@
     <meta name="description" content="Découvrez notre gamme de papier Double A Premium, Everyday, Business, Color Print, Presentation chez ETS SGM, votre grossiste partenaire officiel. Qualité supérieure, service réactif et jusqu'à 40% d'économies. Calculez vos économies. Papier certifié FSC®.">
     <!-- Google Site Verification - MISE A JOUR -->
     <meta name="google-site-verification" content="78eWxBAyPT9zhqicWkI8BR16zc1PDs4NAvEcYJyO3gQ" />
+    <!-- AJOUT DE LA BALISE CANONIQUE -->
+    <link rel="canonical" href="https://ets-sgm-double-a.github.io/" />
+    <!-- FIN AJOUT BALISE CANONIQUE -->
     <title>ETS SGM - Partenaire Officiel DOUBLE A | Papier Premium & Grossiste</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,7 +37,6 @@
         .hover-zoom:hover {
             transform: scale(1.03);
         }
-        /* MODIFIED: Changed border color to white */
         .calculator-input {
              border: 2px solid white;
              padding: 8px 12px;
@@ -47,19 +49,16 @@
         .calculator-output {
             font-weight: bold;
             font-size: 1.1em;
-            /* Default color removed, classes will handle it */
             min-width: 80px;
             display: inline-block;
             text-align: right;
         }
-        /* KEPT AS IS for red/green output */
         .saving-positive {
             color: #2A5C3F; /* doublea-green */
         }
          .saving-negative {
              color: #E31937; /* doublea-red */
          }
-        /* Styles pour la nouvelle section produit */
         .product-card {
             display: flex;
             flex-direction: column; /* Stack image and text vertically by default */
@@ -129,6 +128,92 @@
                 width: 60%;
             }
         }
+        /* Style simple pour les pages légales */
+        .legal-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.75rem; /* text-2xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1.5rem; /* mb-6 */
+            color: #0054A6; /* text-doublea-blue */
+            padding-bottom: 0.5rem; /* pb-2 */
+            border-bottom: 2px solid #E31937; /* border-doublea-red */
+            display: inline-block;
+        }
+         .legal-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            margin-top: 2rem; /* mt-8 */
+            margin-bottom: 1rem; /* mb-4 */
+            color: #1f2937; /* text-gray-800 */
+         }
+         .legal-content p {
+             margin-bottom: 1rem; /* mb-4 */
+             line-height: 1.6; /* leading-relaxed */
+             color: #374151; /* text-gray-700 */
+         }
+         .legal-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem; /* ml-6 */
+            margin-bottom: 1rem; /* mb-4 */
+            color: #374151; /* text-gray-700 */
+         }
+         .legal-content a {
+             color: #0054A6; /* text-doublea-blue */
+             text-decoration: underline;
+         }
+          .legal-content a:hover {
+             color: #E31937; /* text-doublea-red */
+         }
+         /* Simple Header for legal pages */
+        .simple-header {
+             background-color: white;
+             padding: 1rem 1.5rem;
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+        }
+         .simple-header .logo-container {
+            display: flex;
+            align-items: center;
+         }
+         .simple-header .logo-container img {
+            height: 2.5rem; /* h-10 */
+            margin-right: 0.75rem; /* mr-3 */
+         }
+         .simple-header .logo-container span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem; /* text-xl */
+            color: #0054A6; /* text-doublea-blue */
+         }
+         .simple-header .back-link a {
+            color: #0054A6;
+            font-weight: 500;
+            text-decoration: none;
+         }
+         .simple-header .back-link a:hover {
+            color: #E31937;
+            text-decoration: underline;
+         }
+         /* Simple Footer */
+         .simple-footer {
+            background-color: #1f2937; /* bg-gray-800 */
+            color: #9ca3af; /* text-gray-400 */
+            padding: 1.5rem; /* p-6 */
+            text-align: center;
+            font-size: 0.875rem; /* text-sm */
+            margin-top: 3rem; /* mt-12 */
+         }
+         .simple-footer a {
+             color: white;
+             text-decoration: underline;
+         }
+          .simple-footer a:hover {
+             color: #d1d5db; /* text-gray-300 */
+         }
+
     </style>
 </head>
 <body class="font-sans bg-gray-50">
