@@ -9,6 +9,24 @@
     <!-- AJOUT DE LA BALISE CANONIQUE -->
     <link rel="canonical" href="https://ets-sgm-double-a.github.io/" />
     <!-- FIN AJOUT BALISE CANONIQUE -->
+
+    <!-- ===== META TAGS POUR APERCU LIEN (Open Graph & Twitter) ===== -->
+    <meta property="og:title" content="ETS SGM | Partenaire officiel DOUBLE A | Papier premium" />
+    <meta property="og:description" content="Découvrez notre gamme de papier Double A. Qualité supérieure, service réactif et jusqu'à 40% d'économies. Votre grossiste partenaire officiel." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ets-sgm-double-a.github.io/" />
+    <meta property="og:image" content="https://i.postimg.cc/tRKgtp5X/logo-double-a.png" /> <!-- URL vers une image représentative (ex: logo Double A) -->
+    <meta property="og:image:alt" content="Logo Double A" />
+    <meta property="og:site_name" content="ETS SGM" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="ETS SGM | Partenaire officiel DOUBLE A | Papier premium" />
+    <meta name="twitter:description" content="Découvrez notre gamme de papier Double A. Qualité supérieure, service réactif et jusqu'à 40% d'économies. Votre grossiste partenaire officiel." />
+    <meta name="twitter:image" content="https://i.postimg.cc/tRKgtp5X/logo-double-a.png" /> <!-- Même image ou une autre optimisée pour Twitter -->
+    <!-- Si vous avez un compte Twitter associé : <meta name="twitter:site" content="@VotreCompteTwitter"> -->
+    <!-- ===== FIN META TAGS APERCU LIEN ===== -->
+
     <title>ETS SGM - Partenaire Officiel DOUBLE A | Papier Premium & Grossiste</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -213,6 +231,39 @@
           .simple-footer a:hover {
              color: #d1d5db; /* text-gray-300 */
          }
+
+        /* Styles pour le formulaire (optionnel, peut être ajusté) */
+        #contact-form-section label {
+             /* Classes Tailwind appliquées directement */
+        }
+        #contact-form-section input[type="text"],
+        #contact-form-section input[type="email"],
+        #contact-form-section input[type="tel"],
+        #contact-form-section textarea,
+        #contact-form-section input[type="file"] { /* Added file input */
+             /* Classes Tailwind appliquées directement */
+        }
+        /* Specific styling for file input might be needed */
+        #contact-form-section input[type="file"]::file-selector-button {
+          margin-right: 0.5rem;
+          border: thin solid grey;
+          background: #f0f0f0; /* Example */
+          padding: 0.25rem 0.5rem;
+          border-radius: 0.25rem;
+          cursor: pointer;
+        }
+        #contact-form-section button[type="submit"] {
+            /* Classes Tailwind appliquées directement */
+        }
+        #contact-form-section .form-radio-group label {
+            /* Styling specific to radio labels if needed */
+            margin-left: 0.5rem; /* ml-2 */
+        }
+        #form-status {
+          margin-top: 1rem; /* mt-4 */
+          font-weight: 500; /* font-medium */
+          text-align: center;
+        }
 
     </style>
 </head>
@@ -642,6 +693,102 @@
         </div>
     </section>
 
+    <!-- ====================================================== -->
+    <!-- ========== DÉBUT SECTION FORMULAIRE DE CONTACT (MISE A JOUR - ASTERISQUES RETIRÉS) ========== -->
+    <!-- ====================================================== -->
+    <section id="formulaire-contact" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4 text-doublea-blue">Demande de Devis ou d'Information</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Utilisez ce formulaire pour nous envoyer votre demande. Nous vous répondrons rapidement.</p>
+                <div class="w-24 h-1 bg-doublea-red mx-auto mt-4"></div>
+            </div>
+
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <!-- !! IMPORTANT : Ajout de enctype="multipart/form-data" pour l'upload de fichier !! -->
+                <form id="contact-form" action="https://formspree.io/f/xpwdwgne" method="POST" enctype="multipart/form-data">
+
+                    <!-- Champ Nom / Société -->
+                    <div class="mb-5">
+                        <!-- MODIFIE: Astérisque retiré -->
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom / Société</label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-doublea-blue focus:border-doublea-blue sm:text-sm">
+                    </div>
+
+                    <!-- Champ Email -->
+                    <div class="mb-5">
+                         <!-- MODIFIE: Astérisque retiré -->
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-doublea-blue focus:border-doublea-blue sm:text-sm">
+                    </div>
+
+                    <!-- Champ Téléphone (Optionnel retiré) -->
+                    <div class="mb-5">
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Téléphone</label>
+                        <input type="tel" id="phone" name="phone"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-doublea-blue focus:border-doublea-blue sm:text-sm">
+                    </div>
+
+                    <!-- Champ Type de demande (Radio) -->
+                    <div class="mb-5">
+                        <!-- MODIFIE: Astérisque retiré -->
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Type de demande</label>
+                        <div class="space-y-2 form-radio-group">
+                            <div class="flex items-center">
+                                <input id="devis" name="request_type" type="radio" value="Demande de devis (Papier Double A)" required
+                                       class="h-4 w-4 text-doublea-blue border-gray-300 focus:ring-doublea-blue">
+                                <label for="devis" class="ml-2 block text-sm text-gray-900">Demande de devis (Papier Double A)</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="info" name="request_type" type="radio" value="Demande d'information générale" required
+                                       class="h-4 w-4 text-doublea-blue border-gray-300 focus:ring-doublea-blue">
+                                <label for="info" class="ml-2 block text-sm text-gray-900">Demande d'information générale</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Champ Message -->
+                    <div class="mb-5"> <!-- Adjusted margin -->
+                        <!-- MODIFIE: Astérisque retiré -->
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Votre message / Détails de la demande</label>
+                        <textarea id="message" name="message" rows="5" required
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-doublea-blue focus:border-doublea-blue sm:text-sm"></textarea>
+                    </div>
+
+                    <!-- Champ Joindre un fichier -->
+                    <div class="mb-6">
+                        <label for="attachment" class="block text-sm font-medium text-gray-700 mb-1">Joindre un fichier (ex: dernière facture produit équivalent)</label>
+                        <input type="file" id="attachment" name="attachment"
+                               class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-doublea-blue file:text-white hover:file:bg-blue-700">
+                        <p class="mt-1 text-xs text-gray-500">Taille max: 10MB. Types autorisés selon votre configuration Formspree.</p> <!-- Info indicative -->
+                    </div>
+
+                    <!-- Champ caché pour l'objet de l'email -->
+                    <input type="hidden" name="_subject" value="Nouvelle demande depuis ets-sgm-double-a.github.io">
+
+                    <!-- Bouton d'envoi -->
+                    <div>
+                        <button type="submit"
+                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-doublea-red hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-doublea-red transition duration-150 ease-in-out">
+                            Envoyer la demande
+                        </button>
+                    </div>
+
+                    <!-- Statut du formulaire (pour AJAX ou messages Formspree) -->
+                    <p id="form-status" class="mt-4 text-sm text-center"></p>
+
+                </form>
+            </div>
+             <p class="text-center text-xs text-gray-500 mt-4">Note: L'envoi de pièce jointe peut nécessiter un plan Formspree approprié.</p>
+        </div>
+    </section>
+    <!-- ====================================================== -->
+    <!-- ========== FIN SECTION FORMULAIRE DE CONTACT ========== -->
+    <!-- ====================================================== -->
+
+
     <!-- MODIFIED FOOTER -->
     <footer class="bg-gray-900 text-white py-8">
          <div class="container mx-auto px-6">
@@ -750,11 +897,16 @@
                             // Check if the element is currently sticky (position: sticky or fixed)
                             const style = window.getComputedStyle(el);
                             if (style.position === 'sticky' || style.position === 'fixed') {
-                                totalOffset += el.offsetHeight;
+                                // Only count if visible
+                                if (el.offsetParent !== null) {
+                                    totalOffset += el.offsetHeight;
+                                }
                             }
                         });
 
-                        totalOffset = totalOffset > 0 ? totalOffset + 15 : 80; // Add slightly more buffer
+                        // Add a buffer (e.g., 10-15px) to avoid content touching the sticky element
+                        const buffer = 15;
+                        totalOffset += buffer;
 
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
@@ -777,33 +929,63 @@
         // --- Adjust sticky banner top position dynamically ---
         function adjustStickyBannerTop() {
             const header = document.querySelector('header.sticky');
-            const bannerMobile = document.querySelector('.sticky.top-\\[110px\\]'); // Target mobile specific class
-            const bannerDesktop = document.querySelector('.sticky.md\\:top-\\[68px\\]'); // Target desktop specific class
-            const banner = bannerMobile || bannerDesktop; // Fallback in case one class is missing
+            const banner = document.querySelector('.sticky[class*="top-"]'); // More generic selector for the banner
 
             if (header && banner) {
-                 if (window.innerWidth < 768) { // On mobile
-                     const headerHeight = header.offsetHeight;
-                     banner.style.top = `${headerHeight}px`;
-                 } else { // On desktop
-                    // Ensure the correct class is used for the desktop value
-                     if (bannerDesktop) {
-                         bannerDesktop.style.top = '68px'; // Original desktop value
-                    } else if (bannerMobile) {
-                         // If only the mobile class exists, still apply desktop logic
-                         bannerMobile.style.top = '68px';
-                    }
-                 }
+                 const headerHeight = header.offsetHeight;
+                 banner.style.top = `${headerHeight}px`;
             }
         }
 
-
         // Initial calculation on load
         calculateSavings();
-        adjustStickyBannerTop(); // Adjust banner top on load
+        // Use a small delay for adjustStickyBannerTop to ensure header height is stable after potential font loading/layout shifts
+        setTimeout(adjustStickyBannerTop, 100);
 
         // Recalculate on resize
-        window.addEventListener('resize', adjustStickyBannerTop);
+        window.addEventListener('resize', () => {
+            // Debounce resize event slightly if needed, but direct call is often fine
+             adjustStickyBannerTop();
+        });
+
+        // Recalculate on scroll for elements that might become sticky/unsticky (less common for header, but good practice)
+        // window.addEventListener('scroll', adjustStickyBannerTop); // Be mindful of performance if overused
+
+        // --- Formspree form submission handling ---
+        var form = document.getElementById("contact-form");
+        var status = document.getElementById("form-status");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "Merci pour votre message ! Nous vous répondrons bientôt.";
+                    status.className = 'mt-4 text-sm text-center text-green-700 font-medium'; // Success style
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.innerHTML = "Oops! Une erreur s'est produite lors de l'envoi du formulaire.";
+                        }
+                        status.className = 'mt-4 text-sm text-center text-red-700 font-medium'; // Error style
+                    })
+                }
+            }).catch(error => {
+                status.innerHTML = "Oops! Une erreur s'est produite lors de l'envoi du formulaire.";
+                status.className = 'mt-4 text-sm text-center text-red-700 font-medium'; // Error style
+            });
+        }
+        form.addEventListener("submit", handleSubmit)
+
 
     </script>
 
