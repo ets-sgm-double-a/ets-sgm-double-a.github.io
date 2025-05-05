@@ -72,12 +72,15 @@
             display: inline-block;
             text-align: right;
         }
+        /* === MODIFIED SAVING POSITIVE COLOR === */
         .saving-positive {
-            color: #2A5C3F; /* doublea-green */
+            /* color: #2A5C3F; */ /* Original doublea-green, poor contrast on blue */
+            color: #86EFAC; /* Lighter green (like Tailwind green-300) for better contrast */
         }
          .saving-negative {
              color: #E31937; /* doublea-red */
          }
+        /* === END MODIFICATION === */
         .product-card {
             display: flex;
             flex-direction: column; /* Stack image and text vertically by default */
@@ -577,7 +580,7 @@
                  <!-- MODIFIED: Added <br> tags for line breaks -->
                  <p class="text-center text-sm text-gray-500">
                      Les différences sont calculées sur la base de nos tarifs indicatifs pour le papier Premium 80g.<br>
-                     <span class="text-green-700 font-semibold">Un chiffre positif indique une économie</span>, <span class="text-red-700 font-semibold">un chiffre négatif indique un surcoût par rapport à votre prix actuel</span>.<br>
+                     <span class="saving-positive font-semibold">Un chiffre positif indique une économie</span>, <span class="saving-negative font-semibold">un chiffre négatif indique un surcoût par rapport à votre prix actuel</span>.<br> <!-- Applied classes here for example, though they are dynamically applied by JS -->
                      Contactez-nous pour un devis précis.
                  </p>
                  <!-- MODIFIED: Delivery info moved here, adjusted margin & WORDING CHANGED -->
@@ -875,10 +878,10 @@
                 element.textContent = `${value.toFixed(2)} €`;
                 if (value > 0) {
                     element.classList.remove('saving-negative');
-                    element.classList.add('saving-positive');
+                    element.classList.add('saving-positive'); // Class defines the color
                 } else {
                     element.classList.remove('saving-positive');
-                    element.classList.add('saving-negative');
+                    element.classList.add('saving-negative'); // Class defines the color
                 }
             }
         }
