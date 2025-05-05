@@ -49,6 +49,7 @@
         }
     </script>
     <style>
+        /* Keep existing styles */
         .hover-zoom {
             transition: transform 0.3s;
         }
@@ -265,16 +266,46 @@
           text-align: center;
         }
 
+        /* === NEW STYLES FOR FIXED HEADER/BANNER === */
+        body {
+            /* Add padding-top to prevent content from being hidden */
+            /* We will calculate this dynamically with JS */
+            padding-top: 150px; /* Initial estimate, JS will override */
+        }
+
+        header#main-header {
+            /* Ensure header is fixed, full width, and on top */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50; /* Keep z-index high */
+            /* background-color: white; Already applied */
+            /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); Already applied */
+        }
+
+        div#promo-banner {
+            /* Ensure banner is fixed, full width, and below header */
+            position: fixed;
+            left: 0;
+            right: 0;
+            /* top: will be set by JS */
+            z-index: 40; /* Lower than header */
+            /* background-color: #E31937; Already applied */
+            /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); Optional */
+        }
+        /* === END NEW STYLES === */
+
     </style>
 </head>
 <body class="font-sans bg-gray-50">
 
-    <!-- ================= HEADER MODIFIED FOR RESPONSIVENESS ================= -->
-    <header class="bg-white text-gray-800 py-4 px-4 sticky top-0 z-50 shadow-md">
-        <!-- MODIFIED: Added flex-col, items-center, space-y-4 for mobile. Added md:flex-row, md:justify-between, md:items-center, md:space-y-0 for desktop -->
+    <!-- ================= HEADER MODIFIED FOR FIXED POSITION ================= -->
+    <!-- Added id="main-header", removed sticky, top-0 (handled by CSS now) -->
+    <header id="main-header" class="bg-white text-gray-800 py-4 px-4 shadow-md">
+        <!-- Container and flex setup remains the same -->
         <div class="container mx-auto flex flex-col items-center space-y-4 md:flex-row md:justify-between md:items-center md:space-y-0">
             <!-- Logo & Name -->
-            <!-- MODIFIED: Removed md:mb-0 as parent handles spacing -->
             <div class="flex items-center space-x-3">
                 <img src="https://i.postimg.cc/4nkLvWcg/temp_Imageij2pxo.avif" alt="Logo ETS SGM" class="h-12">
                 <div>
@@ -290,20 +321,16 @@
              </div>
 
             <!-- Navigation Buttons -->
-            <!-- MODIFIED: Added flex-col, items-stretch, space-y-2, w-full for mobile. Added md:flex-row, md:items-center, md:space-y-0, md:space-x-4, md:w-auto for desktop -->
             <nav class="flex flex-col items-stretch space-y-2 md:flex-row md:items-center md:space-y-0 md:space-x-4 w-full md:w-auto">
-                 <!-- MODIFIED: Added text-center for button text -->
                  <a href="#produits" class="bg-sky-500 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-sky-600 transition whitespace-nowrap text-center">
                      Découvrez nos produits
                  </a>
-                 <!-- MODIFIED: Added text-center for button text -->
                  <a href="#economies" class="bg-doublea-blue text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap text-center">
                      Calculez vos économies
                  </a>
              </nav>
 
              <!-- Social Icons - Visible only on mobile, below other elements -->
-             <!-- MODIFIED: Added order-last to ensure it appears after nav on mobile. Adjusted margin. -->
              <div class="md:hidden flex items-center justify-center space-x-6 w-full mt-2 order-last">
                  <a href="https://www.linkedin.com/company/ets-sgm/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition" aria-label="LinkedIn ETS SGM"><i class="fab fa-linkedin text-2xl"></i></a>
                  <a href="https://www.tiktok.com/search?q=ets%20sgm&t=1745329759232" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-black transition" aria-label="TikTok ETS SGM"><i class="fab fa-tiktok text-2xl"></i></a>
@@ -312,11 +339,16 @@
     </header>
     <!-- ================= END MODIFIED HEADER ================= -->
 
-    <!-- MODIFIED: Adjusted top value based on potential header height changes. Test & adjust if needed. -->
-    <div class="bg-doublea-red text-white py-2 px-4 text-center font-bold text-lg sticky top-[110px] md:top-[68px] z-40 shadow-md"> <!-- Adjusted sticky top for mobile -->
+    <!-- ================= PROMO BANNER MODIFIED FOR FIXED POSITION ================= -->
+    <!-- Added id="promo-banner", removed sticky and top classes (handled by CSS/JS now) -->
+    <div id="promo-banner" class="bg-doublea-red text-white py-2 px-4 text-center font-bold text-lg shadow-md">
         <p>✨ Jusqu'à <span class="text-2xl">40%</span> d'économies sur votre papier ! ✨</p>
     </div>
+    <!-- ================= END MODIFIED PROMO BANNER ================= -->
 
+
+    <!-- The rest of your content remains the same, starting from the hero section -->
+    <!-- Make sure the first content section doesn't have negative margin or absolute positioning -->
     <section class="relative bg-gradient-to-r from-blue-50 via-white to-red-50 text-gray-800 py-20 md:py-28">
         <div class="container mx-auto px-6 text-center relative z-10">
              <!-- LOGO DOUBLE A SIZE INCREASED -->
@@ -816,12 +848,14 @@
     <!-- END MODIFIED FOOTER -->
 
     <script>
+        // --- Constants for Calculator ---
         const ETS_SGM_PRICE_A4 = 3.50;
         const ETS_SGM_PRICE_A3 = 7.00;
         const REAMS_PER_CARTON = 5;
         const REAMS_PER_PALLET_A4 = 240; // 48 cartons * 5 ramettes
         const REAMS_PER_PALLET_A3 = 120; // 24 cartons * 5 ramettes
 
+        // --- Element References for Calculator ---
         const inputPriceA4 = document.getElementById('userPriceA4');
         const inputPriceA3 = document.getElementById('userPriceA3');
         const outputSavingA4Ream = document.getElementById('saving-a4-ream');
@@ -831,16 +865,14 @@
         const outputSavingA3Carton = document.getElementById('saving-a3-carton');
         const outputSavingA3Pallet = document.getElementById('saving-a3-pallet');
 
+        // --- Calculator Logic ---
         function displaySaving(element, value) {
-            // Check if the value is Not a Number
             if (isNaN(value)) {
-                element.textContent = '0.00 €'; // Display default text for invalid input
+                element.textContent = '0.00 €';
                 element.classList.remove('saving-positive');
-                element.classList.add('saving-negative'); // Or a neutral class if preferred
+                element.classList.add('saving-negative');
             } else {
-                // Format the value to 2 decimal places and add the currency symbol
                 element.textContent = `${value.toFixed(2)} €`;
-                // Apply class based on whether the value is positive or non-positive (zero or negative)
                 if (value > 0) {
                     element.classList.remove('saving-negative');
                     element.classList.add('saving-positive');
@@ -852,59 +884,68 @@
         }
 
         function calculateSavings() {
-            // Get user input, default to 0 if empty or invalid
             const userPriceA4 = parseFloat(inputPriceA4.value) || 0;
-            // Check if input is a non-negative number
-            if (userPriceA4 >= 0 && inputPriceA4.value.trim() !== '') { // Also check if input is not just whitespace
+            if (userPriceA4 >= 0 && inputPriceA4.value.trim() !== '') {
                  const savingPerReamA4 = userPriceA4 - ETS_SGM_PRICE_A4;
                  displaySaving(outputSavingA4Ream, savingPerReamA4);
                  displaySaving(outputSavingA4Carton, savingPerReamA4 * REAMS_PER_CARTON);
                  displaySaving(outputSavingA4Pallet, savingPerReamA4 * REAMS_PER_PALLET_A4);
             } else {
-                 // Reset display if input is negative or empty/invalid
-                 displaySaving(outputSavingA4Ream, NaN); // Pass NaN to trigger default display
+                 displaySaving(outputSavingA4Ream, NaN);
                  displaySaving(outputSavingA4Carton, NaN);
                  displaySaving(outputSavingA4Pallet, NaN);
             }
 
             const userPriceA3 = parseFloat(inputPriceA3.value) || 0;
-             if (userPriceA3 >= 0 && inputPriceA3.value.trim() !== '') { // Also check if input is not just whitespace
+             if (userPriceA3 >= 0 && inputPriceA3.value.trim() !== '') {
                 const savingPerReamA3 = userPriceA3 - ETS_SGM_PRICE_A3;
                 displaySaving(outputSavingA3Ream, savingPerReamA3);
                 displaySaving(outputSavingA3Carton, savingPerReamA3 * REAMS_PER_CARTON);
                 displaySaving(outputSavingA3Pallet, savingPerReamA3 * REAMS_PER_PALLET_A3);
              } else {
-                 // Reset display if input is negative or empty/invalid
-                 displaySaving(outputSavingA3Ream, NaN); // Pass NaN to trigger default display
+                 displaySaving(outputSavingA3Ream, NaN);
                  displaySaving(outputSavingA3Carton, NaN);
                  displaySaving(outputSavingA3Pallet, NaN);
              }
         }
 
-        // Smooth scroll for anchor links
+        // --- Fixed Header/Banner Logic ---
+        const header = document.getElementById('main-header');
+        const banner = document.getElementById('promo-banner');
+        const body = document.body;
+
+        function adjustLayoutForFixedHeader() {
+            if (header && banner) {
+                const headerHeight = header.offsetHeight;
+                const bannerHeight = banner.offsetHeight;
+                const totalFixedHeight = headerHeight + bannerHeight;
+
+                // Set the top position of the banner below the header
+                banner.style.top = `${headerHeight}px`;
+
+                // Set the body's top padding to prevent content overlap
+                body.style.paddingTop = `${totalFixedHeight}px`;
+            } else {
+                 // Fallback padding if elements aren't found (adjust value if needed)
+                 body.style.paddingTop = '150px';
+            }
+        }
+
+        // --- Smooth Scroll Logic (Modified Offset) ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                // Only scroll smoothly for internal links, not mailto: or tel: or external/other pages
+
                 if (targetId.startsWith('#') && targetId.length > 1) {
                     const targetElement = document.querySelector(targetId);
                     if(targetElement){
-                        // Recalculate sticky elements height dynamically
+                        // Calculate the total height of the fixed elements
                         let totalOffset = 0;
-                        const stickyElements = document.querySelectorAll('.sticky');
-                        stickyElements.forEach(el => {
-                            // Check if the element is currently sticky (position: sticky or fixed)
-                            const style = window.getComputedStyle(el);
-                            if (style.position === 'sticky' || style.position === 'fixed') {
-                                // Only count if visible
-                                if (el.offsetParent !== null) {
-                                    totalOffset += el.offsetHeight;
-                                }
-                            }
-                        });
+                        if (header) totalOffset += header.offsetHeight;
+                        if (banner) totalOffset += banner.offsetHeight;
 
-                        // Add a buffer (e.g., 10-15px) to avoid content touching the sticky element
+                        // Add a small buffer
                         const buffer = 15;
                         totalOffset += buffer;
 
@@ -917,47 +958,23 @@
                         });
                     }
                 } else if (!targetId.startsWith('mailto:') && !targetId.startsWith('tel:') && !targetId.startsWith('#') && !targetId.startsWith('javascript:')) {
-                     // For external links or different pages (like mentions-legales.html), just navigate
                      window.location.href = targetId;
                 } else if (targetId.startsWith('mailto:') || targetId.startsWith('tel:')) {
-                     // Allow mailto and tel links default behavior
                      window.location.href = targetId;
                 }
             });
         });
 
-        // --- Adjust sticky banner top position dynamically ---
-        function adjustStickyBannerTop() {
-            const header = document.querySelector('header.sticky');
-            const banner = document.querySelector('.sticky[class*="top-"]'); // More generic selector for the banner
-
-            if (header && banner) {
-                 const headerHeight = header.offsetHeight;
-                 banner.style.top = `${headerHeight}px`;
-            }
-        }
-
-        // Initial calculation on load
-        calculateSavings();
-        // Use a small delay for adjustStickyBannerTop to ensure header height is stable after potential font loading/layout shifts
-        setTimeout(adjustStickyBannerTop, 100);
-
-        // Recalculate on resize
-        window.addEventListener('resize', () => {
-            // Debounce resize event slightly if needed, but direct call is often fine
-             adjustStickyBannerTop();
-        });
-
-        // Recalculate on scroll for elements that might become sticky/unsticky (less common for header, but good practice)
-        // window.addEventListener('scroll', adjustStickyBannerTop); // Be mindful of performance if overused
-
-        // --- Formspree form submission handling ---
+        // --- Formspree Logic ---
         var form = document.getElementById("contact-form");
         var status = document.getElementById("form-status");
 
         async function handleSubmit(event) {
             event.preventDefault();
             var data = new FormData(event.target);
+            status.innerHTML = "Envoi en cours..."; // Indicate sending
+            status.className = 'mt-4 text-sm text-center text-gray-600 font-medium';
+
             fetch(event.target.action, {
                 method: form.method,
                 body: data,
@@ -967,25 +984,41 @@
             }).then(response => {
                 if (response.ok) {
                     status.innerHTML = "Merci pour votre message ! Nous vous répondrons bientôt.";
-                    status.className = 'mt-4 text-sm text-center text-green-700 font-medium'; // Success style
+                    status.className = 'mt-4 text-sm text-center text-green-700 font-medium';
                     form.reset();
                 } else {
                     response.json().then(data => {
                         if (Object.hasOwn(data, 'errors')) {
                             status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
                         } else {
-                            status.innerHTML = "Oops! Une erreur s'est produite lors de l'envoi du formulaire.";
+                            status.innerHTML = "Oops! Une erreur s'est produite lors de l'envoi.";
                         }
-                        status.className = 'mt-4 text-sm text-center text-red-700 font-medium'; // Error style
-                    })
+                        status.className = 'mt-4 text-sm text-center text-red-700 font-medium';
+                    }).catch(error => {
+                         status.innerHTML = "Oops! Une erreur s'est produite (parsing response).";
+                         status.className = 'mt-4 text-sm text-center text-red-700 font-medium';
+                    });
                 }
             }).catch(error => {
-                status.innerHTML = "Oops! Une erreur s'est produite lors de l'envoi du formulaire.";
-                status.className = 'mt-4 text-sm text-center text-red-700 font-medium'; // Error style
+                status.innerHTML = "Oops! Une erreur réseau s'est produite.";
+                status.className = 'mt-4 text-sm text-center text-red-700 font-medium';
             });
         }
         form.addEventListener("submit", handleSubmit)
 
+        // --- Initial Calculations & Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            calculateSavings(); // Initial calculator run
+            adjustLayoutForFixedHeader(); // Initial layout adjustment
+        });
+
+        // Recalculate on resize
+        window.addEventListener('resize', () => {
+             adjustLayoutForFixedHeader(); // Adjust layout on resize
+        });
+
+        // Optional: Recalculate on scroll if needed (unlikely for this scenario)
+        // window.addEventListener('scroll', adjustLayoutForFixedHeader);
 
     </script>
 
